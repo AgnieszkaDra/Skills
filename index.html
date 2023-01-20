@@ -5,8 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
+    <div class="skills">
+        <div class="skillsToday">
+            <div class="skillsTitle">How do you feel your skills Today?</div>
+            <div class="skillsContainer">
+                <div class="HTMLData data">
+                    <div class="HTML-title name">HTML</div>
+                    <input type="text" onblur="getVal()" class="HTMLData">
+                </div>
+                <div class="CSSData data">
+                    <div class="name"> CSS</div>
+                    <input type="text">
+                </div>
+                <div class="JavaScriptData data">
+                    <div class="name">Java Script</div>
+                    <input type="text">
+                </div>
+                <div class="ReactData data">
+                    <div class="name"> React</div>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="chartContainer">
+            <canvas id="myChartToday"></canvas>
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="./app.js"></script>
 </body>
 </html>
