@@ -67,8 +67,9 @@ const HTML = document.querySelector('.HTMLData')
 //   })
 //                 }
 //                 HTMLDataNumber()
-
+const htmlD = addExcursions()
   const dataToday = {
+ 
     labels: [
       'HTML',
       'CSS',
@@ -77,7 +78,7 @@ const HTML = document.querySelector('.HTMLData')
     ],
     datasets: [{
       label: 'My Skills',
-      data: [80, 10, 10, 40],
+      data: [htmlD, 2, 4,5 ],
       
       backgroundColor: [
         'rgb(255, 99, 132)',
@@ -201,4 +202,21 @@ function getVal(){
                 return HTMLDataNumber
 }
   
+
+function addExcursions() {
+  const form = document.querySelector('form');
+  form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const {html, css, javascript, react} = e.target.elements;
+      
+      const data = {
+          html:html.value, css: css.value, javascript: javascript.value,
+          react: react.value
+      };
+
+    return data
+})
+}
+addExcursions()
 
