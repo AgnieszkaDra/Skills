@@ -2,7 +2,15 @@
 
 const ctxToday = document.getElementById('myChartToday');
 const HTML = document.querySelector('.HTMLData')
+const htmlVal = document.querySelector('.html')
+console.log(htmlVal.value)
+const val5 = function getVal(){
+    alert('val')
+  const HTMLData = document.querySelector('.html').value;
 
+const HTMLDataNumber = Number(HTMLData)
+return console.log(HTMLData)
+}
 // function getVal() {
     
 //     const val = document.querySelector('.HTMLData').value;
@@ -67,7 +75,7 @@ const HTML = document.querySelector('.HTMLData')
 //   })
 //                 }
 //                 HTMLDataNumber()
-const htmlD = addExcursions()
+
   const dataToday = {
  
     labels: [
@@ -78,7 +86,7 @@ const htmlD = addExcursions()
     ],
     datasets: [{
       label: 'My Skills',
-      data: [htmlD, 2, 4,5 ],
+      data: [val5, 2, 4,5 ],
       
       backgroundColor: [
         'rgb(255, 99, 132)',
@@ -86,8 +94,6 @@ const htmlD = addExcursions()
         'rgb(255, 205, 86)',
         'rgb(456,19,456'
       ],
-
-     
     }]
   };
 
@@ -203,20 +209,28 @@ function getVal(){
 }
   
 
-function addExcursions() {
-  const form = document.querySelector('form');
-  form.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const {html, css, javascript, react} = e.target.elements;
+// function addExcursions(htmlVal) {
+//   const form = document.querySelector('form');
+//   // form.addEventListener('submit', e => {
+//   //     e.preventDefault();
+// const htmlVal2 = htmlVal.value
+//       // const {html, css, javascript, react} = e.target.elements;
       
-      const data = {
-          html:html.value, css: css.value, javascript: javascript.value,
-          react: react.value
-      };
+//       // const data = {
+//       //     html:html.value, css: css.value, javascript: javascript.value,
+//       //     react: react.value
+//       // };
 
-    return data
-})
-}
-addExcursions()
+//     //return data.html, data.css, data.javascript, data.react
+//     console.log(htmlVal2)
+// }
+
+// function addResult(){
+
+// }
+
+
+  
+
+
 
