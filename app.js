@@ -86,7 +86,7 @@ return console.log(HTMLData)
     ],
     datasets: [{
       label: 'My Skills',
-      data: [val5, 2, 4,5 ],
+      data: [6, 2, 4,5 ],
       
       backgroundColor: [
         'rgb(255, 99, 132)',
@@ -209,28 +209,34 @@ function getVal(){
 }
   
 
-// function addExcursions(htmlVal) {
-//   const form = document.querySelector('form');
-//   // form.addEventListener('submit', e => {
-//   //     e.preventDefault();
-// const htmlVal2 = htmlVal.value
-//       // const {html, css, javascript, react} = e.target.elements;
-      
-//       // const data = {
-//       //     html:html.value, css: css.value, javascript: javascript.value,
-//       //     react: react.value
-//       // };
-
-//     //return data.html, data.css, data.javascript, data.react
-//     console.log(htmlVal2)
-// }
-
-// function addResult(){
-
-// }
 
 
-  
+
+const form1 = document.querySelector('form')
+console.log(form1)
+
+const dataToday2 = dataToday
+
+function data(form1, dataToday2) {
+console.log(dataToday2)
+  const el1 = form1.srcElement[0].value = 'ala'
+console.log(form1)
+ 
+}
+
+form1.addEventListener('submit', function(el){
+  el.preventDefault()
+   const el1 = document.getElementById('1').value
+   dataToday.datasets[0].data[0] = el1
+   console.log(dataToday.datasets[0].data[0])
+ chart.update()
+})
+
+
+
+
+
+
 
 
 
