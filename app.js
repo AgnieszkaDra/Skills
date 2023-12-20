@@ -1,33 +1,16 @@
-const ctxToday = document.getElementById('myChartToday');
-const HTML = document.querySelector('.HTMLData')
-const htmlVal = document.querySelector('.html')
-console.log(htmlVal.value)
-const val5 = function getVal(){
-    alert('val')
-  const HTMLData = document.querySelector('.html').value;
 
-const HTMLDataNumber = Number(HTMLData)
-return console.log(HTMLData)
-}
+let customCanvasBackgroundColor;
+let color;
+document.addEventListener('DOMContentLoaded', init);
 
+function init() {
+  const ctxToday = document.getElementById('myChartToday');
+  Chart.register(ChartDataLabels);
 
-
- 
- 
-
-
-
-
-  
-  
- Chart.register(ChartDataLabels);
-  const datapoint = ['HTML','CSS','JavaScript','React',]
-let total = 0
-  
-  const chart = new Chart(ctxToday,{
+  const chart = new Chart(ctxToday, {
     type: 'pie',
     data: {
- 
+
       labels: [
         'HTML',
         'CSS',
@@ -36,8 +19,8 @@ let total = 0
       ],
       datasets: [{
         label: 'My Skills',
-        data: [1, 1, 1,1 ],
-        
+        data: [1, 1, 1, 1],
+
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
@@ -47,129 +30,96 @@ let total = 0
       }]
     },
     options: {
-        plugins: {
-          tooltip: {
-            enabled: false, 
-          },
-            legend: {
-            position: 'bottom',
-            align: 'start',
-            onHover: false,
-            onLeave: false,
+      plugins: {
+        tooltip: {
+          enabled: false,
+        },
+        legend: {
+          position: 'bottom',
+          align: 'start',
+          onHover: false,
+          onLeave: false,
         },
         datalabels: {
-            formatter: function(value, context) {
-                console.log(context)
-                console.log(context.chart.data.datasets[0].data)
-                console.log(context.chart.data.labels[context.dataIndex])
-                console.log(value)
-                //return context.chart.data.labels[context.dataIndex];
-               
-                function totalSum(total, datapoint){
-                  return total + datapoint
-                }
+          formatter: function (value, context) {
+            function totalSum(total, datapoint) {
+              return total + datapoint
+            }
+            const datapoints = context.chart.data.datasets[0].data
+            console.log(datapoints)
+            const totalvalue = datapoints.reduce(totalSum, 0)
+            const percentageValue = (value / totalvalue * 100).toFixed(1)
 
-               //   const datapoints1 = context.chart.data.datasets[0].data[0]
-                //   const datapoints2 = context.chart.data.datasets[0].data[1]
-                const datapoints = context.chart.data.datasets[0].data
-                console.log(datapoints)
-                
-                const totalvalue = datapoints.reduce(totalSum,0)
-                console.log(totalvalue)
-                const percentageValue = (value/totalvalue *100).toFixed(1)
-                
-                return ` ${percentageValue}%`
-                
-              }
-          },
+            return ` ${percentageValue}%`
+
+          }
         },
+      },
 
-        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-         'onClick' : function (evt, item) {
-            console.log ('legend onClick', evt);
-            console.log('legd item', item[0].element.options);
-             customCanvasBackgroundColor = 'lightGreen',
-              text = 'ala'
-              color= 'black'
-              
-            item[0].element.options.backgroundColor = customCanvasBackgroundColor
-            item[0].element.options.borderColor= color
-            
-        
-        },
-        'onHover' : function (evt, item) {
-            console.log ('legend onClick', evt);
-            console.log('legd item',  item);
-             customCanvasBackgroundColor = 'lightGreen',
-              text = 'ala'
-              
-          
-        },
-       
-
-    }, 
-  
-   
- }
-
-
+      events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+      'onClick': function (evt, item) {
+        customCanvasBackgroundColor = 'lightGreen',
+        color='red'
+          item[0].element.options.backgroundColor = customCanvasBackgroundColor
+         
+        item[0].element.options.fontColor = color
+      },
+    },
+  }
   )
 
 
+  const fields = [
+    {name: 'HTML'},
+    { name: 'CSS' },
+    { name: 'JS' },
+    { name: 'React' }
+  ]
+  const form = document.querySelector('form')
+  form.addEventListener('submit', handleSubmit);
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    fields.forEach(function (field) {
+      const { name } = field;
+      const HTMLvalue = form.elements['HTML'].value;
+      chart.data.datasets[0].data[0] = Number(HTMLvalue)
+   
+      const CSSvalue = form.elements['CSS'].value;
+      chart.data.datasets[0].data[1] = Number(CSSvalue)
 
+      const JSvalue = form.elements['JS'].value;
+      chart.data.datasets[0].data[2] = Number(JSvalue)
 
-const HTMLVal = document.getElementById('1')
+      const Reactvalue = form.elements['React'].value;
+      chart.data.datasets[0].data[3] = Number(Reactvalue)
 
-HTMLVal.addEventListener('input', function (el) {
+      chart.update()
+  });
 
-const valHTML = el.target.value
-  chart.data.datasets[0].data[0] = Number(valHTML)
-    chart.update()
+}
 
+}
 
+function checkAndSetDefault() {
 
-});
+  const inputs = document.querySelectorAll('#skills__chart input[type="number"]');
 
-const CSSVal = document.getElementById('2')
+  inputs.forEach(input => {
+    const value = parseFloat(input.value)
+    console.log(value)
 
-CSSVal.addEventListener('input', function (el) {
+    if (isNaN(value)) {
+      input.value = 0;
+    }
+  });
+}
 
-const valCSS = el.target.value
-  chart.data.datasets[0].data[1] = Number(valCSS)
-    chart.update()
-
-
-
-});
-
-
-const JSVal = document.getElementById('3')
-
-CSSVal.addEventListener('input', function (el) {
-
-const valJS = el.target.value
-  chart.data.datasets[0].data[2] = Number(valJS)
-    chart.update()
-
-
-
-});
-
-
-const ReactVal = document.getElementById('4')
-
-CSSVal.addEventListener('input', function (el) {
-
-const valReact = el.target.value
-  chart.data.datasets[0].data[3] = Number(valReact)
-    chart.update()
-
-
-
-});
+checkAndSetDefault();
 
 
 
 
-  
+
+
+

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,37 +8,37 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <div class="skills">
-        <div class="skillsToday">
-            <div class="skillsTitle">How do you feel your skills Today?</div>
-            <div class="skillsContainer">
-                <div class="HTMLData data">
-                    <div class="HTML-title name">HTML</div>
-                    <input type="text" id='1' class="html"/>
-                </div>
-                <div class="CSSData data">
-                    <div class="name"> CSS</div>
-                    <input type="text" id='2' name="css"/>
-                </div>
-                <div class="JavaScriptData data">
-                    <div class="name">Java Script</div>
-                    <input type="text" id='3' name="javascript">
-                </div>
-                <div class="ReactData data">
-                    <div class="name"> React</div>
-                    <input type="text" id='4' name="react"/>
-                </div>
-              
-            </div>
-        </div>
-        <div class="chartContainer">
-            <canvas id="myChartToday"></canvas>
-        </div>
-    </div>
 
+<body>
+    <header>
+        <h1>How do you feel your skills Today?</h1>
+    </header>
+    <main class="skills">
+        <div class="skills__form">
+              <form id="skills__chart">
+                <label for="HTML">HTML</label>
+                <input type="number" id="1" name="HTML" placeholder="Enter number">
+         
+                <label for="CSS">CSS</label>
+                <input type="number" id="2" name="CSS" placeholder="Enter number">
+         
+                <label for="JS">Java Script</label>
+                <input type="number" id="3" name="JS"  placeholder="Enter number">
+        
+     
+                <label for="React">React</label>
+                <input type="number" id="4" name="React" placeholder="Enter number">
+          
+            <button type="submit" class="buttonchart">Generate Chart</button>
+        </form> 
+        </div>
+     <div class="chartContainer">
+            <canvas id="myChartToday"></canvas>
+        </div> 
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-    <script src="./app.js"></script>
+    <script  type="module" src="./app.js"></script>
 </body>
+
 </html>
