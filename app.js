@@ -103,7 +103,7 @@ function init() {
 
 function checkAndSetDefault() {
 
-  const inputs = document.querySelectorAll('#skills__chart input[type="number"]');
+  const inputs = document.querySelectorAll('#form input[type="number"]');
 
   inputs.forEach(input => {
     const value = parseFloat(input.value)
